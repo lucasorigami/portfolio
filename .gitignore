@@ -1,0 +1,4 @@
+*.mp4
+/node_modules
+book_backup.gif
+.ds_store
