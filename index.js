@@ -4,17 +4,29 @@ const playbuttonEl = document.getElementById("playbutton")
 var audio = new Audio('audio_file.mp3');
 var playing = true; 
 var loadingImg = document.querySelector("#loading img");
-
+// var allExceptIFrame = document.querySelectorAll("*:not(iframe)")
 var currentDate = new Date().getHours()
+var loaded = false;
+
+
 
 
 addEventListener('load', () => {
-    console.log("loaded!")
+    if (loaded){
     loadingEl.classList.add("loadinganimation")
     loadingImg.classList.add("loadinganimation")
+    console.log("normal load")
+}
     // loadingEl.style.display = "none";
 })
 
+
+setTimeout(() => {
+    loadingEl.classList.add("loadinganimation")
+    loadingImg.classList.add("loadinganimation")
+    loaded = true;
+    console.log("early load")
+}, 4000);
 
 /*For when object has fully faded*/
 loadingEl.addEventListener("transitioned", function() {
