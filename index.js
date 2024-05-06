@@ -3,9 +3,17 @@ const ribbonEl = document.getElementById("ribbon");
 const playbuttonEl = document.getElementById("playbutton")
 var audio = new Audio('audio_file.mp3');
 var playing = true; 
-
+var loadingImg = document.querySelector("#loading img");
 
 var currentDate = new Date().getHours()
+
+
+addEventListener('load', () => {
+    console.log("loaded!")
+    loadingEl.classList.add("loadinganimation")
+    loadingImg.classList.add("loadinganimation")
+    // loadingEl.style.display = "none";
+})
 
 
 /*For when object has fully faded*/

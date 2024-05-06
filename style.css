@@ -281,21 +281,19 @@ video {
     background: #222222;
     z-index: 1000;
     background-color: black;
+    margin: 0;
+}
+
+.loadinganimation {
     animation-name: "loading";
     animation-delay: 5s;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
-    margin: 0;
-
 }
 
 #loading img {
     width: 600px;
     height: 400px;
-    animation-name: "loading";
-    animation-delay: 5s;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
 }
 
 @keyframes loading {
