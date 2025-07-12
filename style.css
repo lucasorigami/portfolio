@@ -25,6 +25,10 @@ body {
     
 }
 
+h2 {
+    line-height: 110%;
+}
+
 p {
     color: white;
     font-family: "IA Writer Quattro V";
@@ -272,7 +276,9 @@ video {
 
 
 #loading {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     top: 0;
     width: 100%;
@@ -284,30 +290,99 @@ video {
     margin: 0;
 }
 
-.loadinganimation {
+/* .loadinganimation {
     animation-name: "loading";
     animation-delay: 5s;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
-}
+} */
 
 #loading img {
     width: 600px;
     height: 400px;
 }
 
-@keyframes loading {
-    0% {
-        opacity: 100;
-    }
+.fadeout {
+    animation-name: "loading";
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: "loading";
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-name: "loading";
+    -moz-animation-duration: 1s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-name: "loading";
+    -o-animation-duration: 1s;
+    -o-animation-fill-mode: forwards;
+}
 
-    99% {
-        opacity: 0;
+@-webkit-keyframes loading {
+    0% {
+        opacity: 1;
         height: 100%;
     }
-
+    
+    20% {
+        opacity: 1;
+        height: 300%;
+    }
+    
     100% {
-        height: 0;
+        height: 300%;
+        opacity: 0;
+    }
+
+}
+
+@-moz-keyframes loading {
+    0% {
+        opacity: 1;
+        height: 100%;
+    }
+    
+    20% {
+        opacity: 1;
+        height: 300%;
+    }
+    
+    100% {
+        height: 300%;
+        opacity: 0;
+    }
+}
+
+@-o-keyframes loading {
+    0% {
+        opacity: 1;
+        height: 100%;
+    }
+    
+    20% {
+        opacity: 1;
+        height: 300%;
+    }
+    
+    100% {
+        height: 300%;
+        opacity: 0;
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 1;
+        height: 100%;
+    }
+    
+    20% {
+        opacity: 1;
+        height: 300%;
+    }
+    
+    100% {
+        height: 300%;
+        opacity: 0;
     }
 }
 
