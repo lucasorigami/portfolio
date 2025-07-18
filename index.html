@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="graph.css">
+</head>
+<body>
+        <div id="loading">
+            <img src="ripple.gif" alt="">
+        </div>
+
+
+    <div id="topbar">
+        <div><span class="active blinker">•&nbsp</span><span id="currently"><a
+                    href="https://instagram.com/lucasdesigns">Lucas is currently: </a></span></div>
+        <div id="ribbon">
+        </div>
+    </div>
+    
+    <div id="popover-backdrop" style="display:none;">
+        <div id="x-button"></div>
+        <div id="popover">
+            <div id="content"></div>
+        </div>
+    </div>
+
+        <div><svg id="small-graph" width="100%" height="100%"></svg></div>
+        <script src="loading_ribbon.js"></script>
+        <script src="new.js"></script>
+</body>
+</html>

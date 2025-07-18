@@ -1,0 +1,319 @@
+@font-face {
+    font-family: "ABC Repro";
+    font-style: normal;
+    font-weight: normal;
+    src: url("ABCRepro-Regular.woff2") format("woff2"), url("ABCRepro-Regular.woff") format("woff"), url("ABCRepro-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "iA Writer Quattro V";
+    font-style: italic;
+    font-weight: normal;
+    src: url("iAWriterQuattroV-Italic.woff2") format("woff2"), url("iAWriterQuattroV-Italic.woff") format("woff"), url("iAWriterQuattroV-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "iA Writer Quattro V";
+    font-style: normal;
+    font-weight: normal;
+    src: url("iAWriterQuattroV.woff2") format("woff2"), url("iAWriterQuattroV.woff") format("woff"), url("iAWriterQuattroV.ttf") format("truetype");
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    margin: 0px;
+
+    color: white;
+}
+
+h2 {
+    line-height: 110%;
+}
+
+p {
+    color: white;
+    font-family: "IA Writer Quattro V";
+}
+
+a {
+    color: white;
+}
+
+span {
+    color: white;
+    font-family: "IA Writer Quattro V";
+}
+
+h1 {
+    color: white;
+    transition: all 0.3s ease-in-out;
+    font-size: 150px;
+    font-family: "ABC Repro";
+    line-height: 150px;
+}
+
+h2 {
+    color: white;
+    transition: all 0.3s ease-in-out;
+    font-family: "ABC Repro";
+}
+
+img {
+    width: 100%;
+    height: auto;
+    inline-size: 100%;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    inline-size: 100%;
+
+}
+
+@keyframes t1 {
+    0% {
+        left: -1000px;
+    }
+
+    /* 60% {left: 70%;} */
+    100% {
+        left: 100%;
+    }
+}
+
+#loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: black;
+    margin: 0;
+}
+
+#loading img {
+    width: 600px;
+    height: 400px;
+}
+
+.fadeout {
+    animation-name: "loading";
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: "loading";
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-name: "loading";
+    -moz-animation-duration: 1s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-name: "loading";
+    -o-animation-duration: 1s;
+    -o-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes loading {
+    0% {
+        opacity: 1;
+        height: 100%;
+    }
+    
+    20% {
+        opacity: 1;
+        height: 300%;
+    }
+    
+    100% {
+        height: 300%;
+        opacity: 0;
+    }
+
+}
+
+@-moz-keyframes loading {
+    0% {
+        opacity: 1;
+        height: 100%;
+    }
+    
+    20% {
+        opacity: 1;
+        height: 300%;
+    }
+    
+    100% {
+        height: 300%;
+        opacity: 0;
+    }
+}
+
+@-o-keyframes loading {
+    0% {
+        opacity: 1;
+        height: 100%;
+    }
+    
+    20% {
+        opacity: 1;
+        height: 300%;
+    }
+    
+    100% {
+        height: 300%;
+        opacity: 0;
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 1;
+        height: 100%;
+    }
+    
+    20% {
+        opacity: 1;
+        height: 300%;
+    }
+    
+    100% {
+        height: 300%;
+        opacity: 0;
+    }
+}
+
+a:hover {
+    animation: blinker 1.5s ease-in-out infinite;
+    transition: opacity 0.3s;
+}
+
+.blinker {
+    animation: blinker 1.5s ease-in-out infinite;
+    transition: opacity 0.3s;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0.3;
+    }
+}
+
+#topbar {
+    position: fixed;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    white-space: nowrap;
+    background-color: black;
+}
+
+.active {
+    display: inline-block;
+    color: green;
+}
+
+.passive {
+    display: inline-block;
+    color: #4d4d4d
+}
+#currently a{
+    display: inline-block;
+    color: #4d4d4d;
+    transition: color 0.3s;
+    animation: none;
+    text-decoration: none;
+}
+
+#currently:hover a{
+    display: inline-block;
+    color: green;
+    transition: color 0.3s;
+    animation: none;
+    text-decoration: none;
+}
+
+#ribbon {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    background: #000;
+    color: #fff;
+}
+
+#ribbon .scroll {
+    background: #000;
+    animation: loop 80s linear infinite;
+    animation-delay: 5s;
+}
+
+#ribbon .scroll span{
+    color: #4d4d4d;
+}
+
+.fade {
+    width: 100%;
+    position: absolute;
+    background: linear-gradient(
+        90deg,
+        #000,
+        transparent 5%,
+        transparent 95%,
+        #000
+    );
+    inset: 0;
+}
+
+@keyframes loop {
+    0% {transform: translateX(0%);}
+    100% {transform: translateX(-50%);}
+}  
+
+#popover-backdrop{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(2px);
+    overflow-y: scroll;
+}
+
+#popover {
+    margin-top: 20%;
+    position: absolute;
+    background-color: #0f0f0f;
+    width: 80vw;
+    min-height: 80vh;
+    border-radius: 10px 10px 0 0 ;
+    display: block;
+}
+
+#content {
+    margin-top: 10px;
+    margin-inline: 20%;
+}
+
+#x-button {
+    margin-left: 80vw;
+    height: 40px;
+    margin-top: 20%;
+    width: 40px;
+    border-radius: 100px;
+    background-color: #fff;
+    z-index: 200;
+
+}
+
+pre {
+    text-wrap: wrap;
+    overflow-x: wrap;
+    font-size: 0.8em;
+    color: #4d4d4d;
+}
+
