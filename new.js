@@ -241,7 +241,23 @@ function openPopoverWithTypewriter(nodeData) {
                     const pre = document.createElement('pre');
                     const code = document.createElement('code');
                     code.className = 'language-json';
-                    code.textContent = cleanPart;
+                    // Trailing transparency effect: split into words, wrap each in a span with increasing opacity (oldest = dimmest, newest = brightest)
+                    const words = cleanPart.split(/(\s+)/); // keep spaces
+                    const n = words.filter(w => w.trim().length > 0).length;
+                    let wordIndex = 0;
+                    words.forEach(word => {
+                        if (word.trim().length === 0) {
+                            code.appendChild(document.createTextNode(word));
+                        } else {
+                            // Opacity: first word = 0.3, last = 1, linear fade
+                            const opacity = 0.3 + 0.7 * (wordIndex / Math.max(n - 1, 1));
+                            const span = document.createElement('span');
+                            span.style.opacity = opacity;
+                            span.textContent = word;
+                            code.appendChild(span);
+                            wordIndex++;
+                        }
+                    });
                     pre.appendChild(code);
                     contentDiv.appendChild(pre);
                     if (window.Prism && Prism.highlightElement) {
