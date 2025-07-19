@@ -308,6 +308,7 @@ body.popover-open {
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
+    z-index: 100;
 }
 #popover-backdrop.active {
     opacity: 1;
@@ -413,7 +414,7 @@ pre {
 
 .top-fade {
     position: fixed;
-    top: 60px; /* Set this to the height of your #topbar */
+    top: 80px; /* Set this to the height of your #topbar */
     left: 0;
     width: 100vw;
     height: 80px;

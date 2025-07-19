@@ -99,7 +99,7 @@
   font-weight: bold;
   font-size: larger;
   opacity: 0;
-  z-index: 10000000;
+  z-index: 10;
   pointer-events: none;
 }
 
