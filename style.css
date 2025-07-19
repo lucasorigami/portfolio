@@ -19,6 +19,10 @@
     src: url("iAWriterQuattroV.woff2") format("woff2"), url("iAWriterQuattroV.woff") format("woff"), url("iAWriterQuattroV.ttf") format("truetype");
 }
 
+html, body {
+    font-size: 16px !important;
+}
+
 body {
     background-color: rgb(0, 0, 0);
     margin: 0px;
@@ -96,8 +100,10 @@ video {
 }
 
 #loading img {
-    width: 600px;
-    height: 400px;
+    max-width: 600px;
+    max-height: 400px;
+    width: 80%;
+    height: auto;
 }
 
 .fadeout {
@@ -203,6 +209,7 @@ a:hover {
 #topbar {
     position: fixed;
     padding: 20px;
+    /* width: 100vw; */
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -225,6 +232,7 @@ a:hover {
     transition: color 0.3s;
     animation: none;
     text-decoration: none;
+    font-size: 1em;
 }
 
 #currently:hover a{
@@ -238,7 +246,7 @@ a:hover {
 #ribbon {
     width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow-x: auto;
     white-space: nowrap;
     background: #000;
     color: #fff;
@@ -248,29 +256,42 @@ a:hover {
     background: #000;
     animation: loop 80s linear infinite;
     animation-delay: 5s;
+    font-size: 16px;
 }
 
-#ribbon .scroll span{
-    color: #4d4d4d;
+#ribbon .scroll span {
+    font-size: 16px !important;
+}
+
+#ribbon .scroll, #ribbon .scrollspan {
+    font-size: 16px !important;
 }
 
 .fade {
-    width: 100%;
     position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
     background: linear-gradient(
         90deg,
-        #000,
+        #000 0%,
         transparent 5%,
         transparent 95%,
-        #000
+        #000 100%
     );
-    inset: 0;
 }
 
 @keyframes loop {
     0% {transform: translateX(0%);}
     100% {transform: translateX(-50%);}
 }  
+
+.scrollspan {
+    font-size: 16px;
+}
 
 body.popover-open {
     overflow: hidden;
@@ -291,6 +312,7 @@ body.popover-open {
 #popover-backdrop.active {
     opacity: 1;
     pointer-events: auto;
+    transition: opacity 0.4s ease;
 }
 
 #popover {
@@ -388,3 +410,55 @@ pre {
     border-radius: 0;
 }
 
+@media (max-width: 767px) {
+    #popover {
+        margin: 10vh auto 0 auto;
+        width: 100%;
+        min-height: 90vh;
+    }
+
+    #content {
+        margin-top: 5px;
+        margin-inline: 10%;
+        margin-bottom: 30%;
+    }
+
+    #topbar {
+        flex-direction: column;
+        padding: 0;
+    }    
+
+    #top {
+        padding: 20px 20px 0px;
+    }
+
+    .fade {
+        /* inset-inline-end: 20px; */
+        width: 100vw;
+        position: absolute;
+        background: linear-gradient(
+            90deg,
+            #000,
+            transparent 10%,
+            transparent 85%,
+            transparent 10%,
+            #000
+        );
+        inset: 0;
+    }
+
+
+    #popover-backdrop {
+        backdrop-filter: none;
+        opacity: 0;
+        background-color: #000;
+    }
+    
+
+    #popover-backdrop.active {
+        opacity: 1;
+        pointer-events: auto;
+        transition: opacity 0.4s ease;
+        background-color: #000;
+    }
+}

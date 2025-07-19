@@ -25,15 +25,16 @@ const currentHour = new Date().getHours();
 
 if (currentHour >= 23 || currentHour <= 7) {
     ribbonEl.innerHTML = `<span class="passive">&nbspsleeping...</span>`;
-} else {
-    ribbonEl.innerHTML = `<div class="scroll">
-        <span>– Graduated – emailing people who he's met on the graduation expo – looking for freelance work – updating his linkedin</span>
-        <span>– Graduated – emailing people who he's met on the graduation expo – looking for freelance work – updating his linkedin</span>
-        <span>– Graduated – emailing people who he's met on the graduation expo – looking for freelance work – updating his linkedin</span>
-        <span>– Graduated – emailing people who he's met on the graduation expo – looking for freelance work – updating his linkedin</span>
-    </div>
-    <div class="fade"></div>`;
 }
+// } else {
+//     ribbonEl.innerHTML = `<div class="scroll">
+//         <span class="scrollspan">– Graduated – emailing people who he's met on the graduation expo – looking for freelance work – updating his linkedin</span>
+//         <span class="scrollspan">– Graduated – emailing people who he's met on the graduation expo – looking for freelance work – updating his linkedin</span>
+//         <span class="scrollspan">– Graduated – emailing people who he's met on the graduation expo – looking for freelance work – updating his linkedin</span>
+//         <span class="scrollspan">– Graduated – emailing people who he's met on the graduation expo – looking for freelance work – updating his linkedin</span>
+//     </div>
+//     <div class="fade"></div>`;
+
 
 
     // document.addEventListener('DOMContentLoaded', () => {
