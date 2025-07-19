@@ -272,27 +272,53 @@ a:hover {
     100% {transform: translateX(-50%);}
 }  
 
-#popover-backdrop{
+body.popover-open {
+    overflow: hidden;
+}
+
+#popover-backdrop {
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: top;
-    height: 100vh;
+    top: 0;
+    left: 0;
     width: 100vw;
+    height: 100vh;
     backdrop-filter: blur(2px);
-    overflow-y: scroll;
+    overflow: auto;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+#popover-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #popover {
-    margin-top: 20%;
-    position: absolute;
-    background-color: #0f0f0f;
+    position: relative;
+    margin: 20vh auto 0 auto;
     width: 80vw;
+    max-width: 1200px;
     min-height: 80vh;
-    border-radius: 10px 10px 0 0 ;
+    height: fit-content;
+    background-color: #0f0f0f;
+    border-radius: 10px 10px 0 0;
     display: block;
+    opacity: 0;
+    transform: translateY(100vh);
+    transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1);
 }
+#popover-backdrop.active #popover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* @media (max-height: 900px) {
+  #popover {
+    margin-top: 0;
+    min-height: 60vh;
+    max-height: 90vh;
+  }
+} */
 
 #content {
     margin-top: 10px;
@@ -300,14 +326,29 @@ a:hover {
 }
 
 #x-button {
-    margin-left: 80vw;
+    /* position: absolute; */
+    position: sticky;
+    top: 16px;
+    left: 100%;
+    margin: 16px;
+    /* right: 16px; */
     height: 40px;
-    margin-top: 20%;
     width: 40px;
     border-radius: 100px;
-    background-color: #fff;
     z-index: 200;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background 0.2s, color 0.2s;
+    background-color: #252525;
+    color: #fff;
+}
+#x-button:hover {
+    background-color: #fff;
+    color: #000;
 }
 
 pre {
@@ -315,5 +356,35 @@ pre {
     overflow-x: wrap;
     font-size: 0.8em;
     color: #4d4d4d;
+}
+
+#popover img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 0 10px;
+    padding: 0;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+#popover .popover-portrait-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+#popover .popover-portrait-row img {
+    width: 50%;
+    max-width: 50%;
+    height: auto;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
 }
 

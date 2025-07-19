@@ -32,8 +32,22 @@ function openPopoverWithTypewriter(nodeData) {
     const xButton = document.getElementById('x-button');
     if (!backdrop || !popover || !contentDiv || !xButton) return;
 
-    // Show the popover
+    // Show the popover with animation
     backdrop.style.display = 'flex';
+    document.body.classList.add('popover-open');
+    // Remove any previous active class
+    backdrop.classList.remove('active');
+    popover.classList.remove('active');
+    // Force reflow to restart animation if needed
+    void backdrop.offsetWidth;
+    // Fade in the blur first
+    setTimeout(() => {
+        backdrop.classList.add('active');
+        // After blur fade-in, animate popover in
+        setTimeout(() => {
+            popover.classList.add('active');
+        }, 200); // Match the CSS transition delay
+    }, 10);
     contentDiv.innerHTML = '';
 
     // Prepare JSON string
@@ -96,6 +110,9 @@ function openPopoverWithTypewriter(nodeData) {
         active_year: null,
         tech_tools: null
     };
+
+    // Track total words revealed across all replacements
+    let totalWordsRevealed = 0;
 
     // Helper to get the buffer of currently revealed text
     function getRevealedBuffer() {
@@ -193,7 +210,10 @@ function openPopoverWithTypewriter(nodeData) {
     function revealNextWord() {
         if (currentIndex >= allWordSpans.length) return;
         // Mark this word as revealed
-        if (allWordSpans[currentIndex].nodeType === 1) allWordSpans[currentIndex].dataset.revealed = 1;
+        if (allWordSpans[currentIndex].nodeType === 1) {
+            allWordSpans[currentIndex].dataset.revealed = 1;
+            totalWordsRevealed++; // Increment total counter
+        }
         // Trailing opacity effect
         let revealedIndices = [];
         for (let i = 0; i < allWordSpans.length; i++) {
@@ -205,9 +225,14 @@ function openPopoverWithTypewriter(nodeData) {
             let i = revealedIndices[j];
             let trailIdx = revealedIndices.length - 1 - j;
             let opacity = 0.3 + 0.7 * (1 - Math.min(trailIdx, TRAIL - 1) / (TRAIL - 1));
-            allWordSpans[i].style.transition = 'opacity 0.3s ease';
+            // allWordSpans[i].style.transition = 'opacity 0.3s ease';
             allWordSpans[i].style.opacity = opacity;
         }
+
+        // Calculate logarithmic delay
+        const baseDelay = 150; // ms for the first word
+        const revealedCount = revealedIndices.length;
+        const delay = Math.max(1, baseDelay / Math.log2(2 + totalWordsRevealed));
 
         setTimeout(() => {
             // After the word is revealed, build the buffer from all revealed words
@@ -236,14 +261,50 @@ function openPopoverWithTypewriter(nodeData) {
                         try {
                             const arr = JSON.parse('[' + imagesMatch[1].replace(/\n/g, '').replace(/\s+/g, '') + ']');
                             if (Array.isArray(arr) && arr.length > 0) {
+                                // Create a container for images
                                 const imgContainer = document.createElement('div');
-                                imgContainer.style.margin = '20px 0';
-                                arr.forEach(src => {
-                                    const img = document.createElement('img');
-                                    img.src = src;
-                                    img.style.maxWidth = '200px';
-                                    img.style.margin = '10px';
-                                    imgContainer.appendChild(img);
+                                imgContainer.style.margin = '0';
+                                imgContainer.style.padding = '0';
+                                imgContainer.style.width = '100%';
+                                imgContainer.style.overflow = 'hidden';
+
+                                // Helper to load images and determine orientation
+                                const imagePromises = arr.map(src => {
+                                    return new Promise(resolve => {
+                                        const img = document.createElement('img');
+                                        img.src = src;
+                                        img.onload = () => {
+                                            resolve({img, isPortrait: img.naturalHeight > img.naturalWidth});
+                                        };
+                                        img.onerror = () => {
+                                            resolve({img, isPortrait: false});
+                                        };
+                                    });
+                                });
+
+                                Promise.all(imagePromises).then(imgObjs => {
+                                    // Group portrait images in pairs
+                                    let row = null;
+                                    imgObjs.forEach((obj, idx) => {
+                                        if (obj.isPortrait) {
+                                            if (!row) {
+                                                row = document.createElement('div');
+                                                row.className = 'popover-portrait-row';
+                                            }
+                                            row.appendChild(obj.img);
+                                            // If next image is not portrait or this is the last image, append the row
+                                            if (idx === imgObjs.length - 1 || !imgObjs[idx+1].isPortrait) {
+                                                imgContainer.appendChild(row);
+                                                row = null;
+                                            }
+                                        } else {
+                                            if (row) {
+                                                imgContainer.appendChild(row);
+                                                row = null;
+                                            }
+                                            imgContainer.appendChild(obj.img);
+                                        }
+                                    });
                                 });
                                 htmlElements.images = imgContainer;
                                 return imgContainer;
@@ -401,15 +462,27 @@ function openPopoverWithTypewriter(nodeData) {
             if (currentIndex < allWordSpans.length) {
                 revealNextWord();
             }
-        }, 50);
+        }, delay);
     }
 
     revealNextWord();
 
     // Close logic
-    xButton.onclick = () => {
-        backdrop.style.display = 'none';
-        contentDiv.innerHTML = '';
+    function closePopover() {
+        popover.classList.remove('active');
+        backdrop.classList.remove('active');
+        document.body.classList.remove('popover-open');
+        setTimeout(() => {
+            backdrop.style.display = 'none';
+            contentDiv.innerHTML = '';
+        }, 400);
+    }
+    xButton.onclick = closePopover;
+    // Dismiss when clicking on the backdrop, but not when clicking inside the popover
+    backdrop.onclick = function(event) {
+        if (event.target === backdrop) {
+            closePopover();
+        }
     };
 }
 
