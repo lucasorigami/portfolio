@@ -376,6 +376,7 @@ body.popover-open {
 }
 
 pre {
+    font-family: "IA Writer Quattro V";;
     text-wrap: wrap;
     overflow-x: wrap;
     font-size: 0.8em;
@@ -427,6 +428,59 @@ pre {
         rgba(0,0,0,0) 100%
     );
 }
+
+
+#bottombar {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    flex-direction: row;
+    font-size: 1em;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-family: "IA Writer Quattro V";
+}
+
+#about-container {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000de;
+    z-index: 900;
+    transition: opacity 0.4s ease;
+    opacity: 1;
+}
+
+#about-container.about-fadeout {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#about {
+    width: 80%;
+    max-width: 400px;
+    size: 1em;
+    color: white;
+    font-family: "IA Writer Quattro V";
+    ;
+}
+
+
 
 @media (max-width: 767px) {
     #popover {

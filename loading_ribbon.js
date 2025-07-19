@@ -6,7 +6,7 @@ const ribbonEl = document.getElementById("ribbon");
 // --- Trigger CSS fadeout animation after 2s ---
 setTimeout(() => {
     loadingEl.classList.add("fadeout");
-}, 2000);
+}, 3000);
 
 // --- Remove the loading element after animation ends ---
 const removeLoading = () => {

@@ -912,3 +912,30 @@ function initializeVisualization() {
 
 // Load the data when the script runs
 getData();
+
+// Helper to show the about overlay
+function showAbout() {
+  var aboutContainer = document.getElementById('about-container');
+  if (aboutContainer) {
+    aboutContainer.classList.remove('about-fadeout');
+    aboutContainer.style.display = 'flex';
+  }
+}
+window.showAbout = showAbout;
+
+// Dismiss #about-container with fadeout when clicking anywhere inside it
+(function() {
+  var aboutContainer = document.getElementById('about-container');
+  if (aboutContainer) {
+    aboutContainer.addEventListener('click', function(e) {
+      aboutContainer.classList.add('about-fadeout');
+      // After transition, hide
+      aboutContainer.addEventListener('transitionend', function handler() {
+        if (aboutContainer.classList.contains('about-fadeout')) {
+          aboutContainer.style.display = 'none';
+        }
+        aboutContainer.removeEventListener('transitionend', handler);
+      });
+    });
+  }
+})();
