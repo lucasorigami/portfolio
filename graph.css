@@ -59,14 +59,14 @@
 
 
 .link {
-  stroke: white;
+  stroke: rgb(90, 90, 90);
   stroke-width: 2;
   transition: stroke 0.2s ease, filter 0.2s ease;
 }
 
 .link:hover {
   stroke: #00ff00;
-  filter: drop-shadow(0 0 6px #00ff00);
+  filter: drop-shadow(0 0 6px #ffffff);
 }
 
 .link.small {
@@ -81,7 +81,7 @@
 
 #reset-zoom-button {
   position: fixed;
-  bottom: 20px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   font-size: larger;

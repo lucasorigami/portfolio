@@ -962,3 +962,14 @@ window.showAbout = showAbout;
     });
   }
 })();
+
+document.addEventListener("DOMContentLoaded", function() {
+    const pan = document.getElementById('highlight-pan');
+    const zoom = document.getElementById('highlight-zoom');
+    const click = document.getElementById('highlight-click');
+    if (pan && zoom && click) {
+        setTimeout(() => { pan.classList.add('highlighted'); }, 500);
+        setTimeout(() => { zoom.classList.add('highlighted'); }, 1166);
+        setTimeout(() => { click.classList.add('highlighted'); }, 1833);
+    }
+});

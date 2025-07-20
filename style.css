@@ -90,6 +90,7 @@ video {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     position: fixed;
     top: 0;
     width: 100%;
@@ -97,6 +98,11 @@ video {
     z-index: 1000;
     background-color: black;
     margin: 0;
+    gap: 10px;
+}
+
+#loading span {
+    color: #757575;
 }
 
 #loading img {
@@ -480,7 +486,14 @@ pre {
     ;
 }
 
-
+.highlight-action {
+    color: #757575;
+    /* font-weight: bold; */
+    transition: color 0.4s, text-shadow 0.4s;
+}
+.highlight-action.highlighted {
+    color: #ffffff;
+}
 
 @media (max-width: 767px) {
     #popover {
@@ -560,6 +573,10 @@ pre {
   border: 0;
   display: block;
   background: #111;
+}
+
+#loading .highlight-action.highlighted {
+    color: #fff !important;
 }
 
 
