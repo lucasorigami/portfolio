@@ -7,9 +7,9 @@
             "active": true,
             "year": "2025",
             "images": [
-                "./img/MRP1.jpg",
-                "./img/MRP2.jpg",
-                "./img/MRP3.jpg"
+                "./img/MRP1.webp",
+                "./img/MRP2.webp",
+                "./img/MRP3.webp"
             ],
             "description": "<p>What if images didn't have be bound by folders or timelines? <i>In the Empty Space Beteen Your Files</i> there's a new way of organising images, where structure emerges naturally. </p><p></p>",
             "tools": [
@@ -28,7 +28,7 @@
             "active": true,
             "year": "2024",
             "images": [
-                "./img/biggraphthumb.png"
+                "./img/biggraphthumb.webp"
             ],
             "description": "<p></p><p>This website is about Wikipedia Userboxes, a way for Wikipedia editors to show their interests, it's a fully interactive social graph connecting the Wikipedian to their interests. I'm doing a talk about this at Wikimania, the yearly Wikipedia conference on the 9th of August 2025 at 14:00 Amsterdam Time.</p><p><a href='https://wikimania.wikimedia.org/wiki/2025:Wikimania'>Tune into the talk online for free!</a></p><p><a class='blinker' href='https://thisuser.net' target='_blank'>Check the graph here.</a></p>",
             "tools": [
@@ -48,8 +48,8 @@
             "active": false,
             "year": "2023",
             "images": [
-                "./img/closeupsmoll.jpg",
-                "./img/firstpage.jpg",
+                "./img/closeupsmoll.webp",
+                "./img/firstpage.webp",
                 "./img/book.gif"
             ],
             "description": "<p>PHREAKS is a collection of phone hacking manuals from 1980 - 2000, the texts vary from humourous anecdotes, to technical documents.</p><p>The layout of the book is inspired by Terminal User Interfaces from Operating Systems like MS-DOS. The yellow pages reminds us of old phonebooks, while the opacity of the pages call back to the ghosting seen on CRT monintors from that period.</p>",
@@ -67,8 +67,8 @@
             "active": false,
             "year": "2022",
             "images": [
-                "./img/coffincloudcloseup.jpg",
-                "./img/coffincloudfull.jpg"
+                "./img/coffincloudcloseup.webp",
+                "./img/coffincloudfull.webp"
             ],
             "description": "<p>Coffincloud is a web app with weather forecast for the dead. </p><p>The app is inspired by WeCroak, an app that sends daily notifications reminding you of your mortality. As an experiment I decided to integrate this experience into a daily activity: Checking the weather.</p>",
             "tools": [
@@ -85,10 +85,10 @@
             "active": false,
             "year": "2022",
             "images": [
-                "./img/normalhold.jpg",
-                "./img/closeupredsmoll.jpg",
-                "./img/redhold.jpg",
-                "./img/bluehold.jpg"
+                "./img/normalhold.webp",
+                "./img/closeupredsmoll.webp",
+                "./img/redhold.webp",
+                "./img/bluehold.webp"
             ],
             "description": "<p>?!‽ is a poster showcasing three different punctuation marks, it draws inspiration from the halftone-effect used in the printing of comics.</p><p>In the poster, each of the halftone dots is replaced by a question mark, exclemation point, or an interrobang (a combination of the previous two symbols).</p>",
             "tools": [
@@ -102,7 +102,7 @@
             "type": "Game",
             "active": false,
             "year": "2022",
-            "images": ["./img/clairdelunestill.png"],
+            "images": ["./img/clairdelunestill.webp"],
             "embed": "<iframe src='https://player.vimeo.com/video/937412865?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' frameborder='0' allow='autoplay; fullscreen; picture-in-picture; clipboard-write' style='position:absolute;top:0;left:0;width:100%;height:100%;' title='clairdelune'></iframe>",
             "description": "<p>Youtube User Mr Tortilla has been keeping a diary underneath the YouTube video Clair de Lune for over 3 years. This artwork features his daily entries as tortilla-flags on a moon surface, which you can freely explore.</p>",
             "tools": [
@@ -119,7 +119,7 @@
             "type": "Interactive installation",
             "active": false,
             "year": "2022",
-            "images": ["./img/posterpatent.png"],
+            "images": ["./img/posterpatent.webp"],
             "embed": "<iframe src='https://player.vimeo.com/video/937411647?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' frameborder='0' allow='autoplay; fullscreen; picture-in-picture; clipboard-write' style='position:absolute;top:0;left:0;width:100%;height:100%;' title='patentvideo'></iframe>",
             "description": "<p></p><p>This interactive installation invites the participant to view themselves as a Human Patent.</p><p>Patents, if vague enough can put a design into a companies control. What would happen if the human body came under control of big corporations?</p>",
             "tools": [
@@ -134,7 +134,7 @@
             "type": "Audio Podcast, Website",
             "active": true,
             "year": "2022 - ongoing",
-            "images": ["./img/rotosite.png"],
+            "images": ["./img/rotosite.webp"],
             "description": "<p>The Rotoscope podcast is a podcast about a variety of topics, centered around art school. It's co-hosted by <a href='https://roxana-neacsu-design.glitch.me/'>Roxana Neacșu</a> and <a href='https://mrkrgraphic.com/'>Bálint Korka</a>, and edited by me, with aditional help by Roxana</p><p>This current season we are trying to tighten the gap between interns and potential internship providers by interviewing both parties. With over 6 hours of useful content for students, both in an interactive shortform-audio website, and as hour long podcast episodes wherever you get your podcasts. </p><p><a class='blinker' href='https://rotoscope.nl' target='_blank'>Check the Rotoscope Website!</a></p>",
             "tools": [
                 {"name": "Audition", "url": "https://adobe.com/audition"},
