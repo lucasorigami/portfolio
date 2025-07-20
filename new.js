@@ -52,9 +52,14 @@ function openPopoverWithTypewriter(nodeData) {
 
     // Prepare JSON string
     const filteredData = {};
-    ["node", "images", "description", "active", "year", "technologies", "tools"].forEach(key => {
-        if (nodeData[key] !== undefined) filteredData[key] = nodeData[key];
-    });
+    // Only include 'images' if there is no embed, and 'embed' if present
+    ["node"].forEach(key => { if (nodeData[key] !== undefined) filteredData[key] = nodeData[key]; });
+    if (nodeData.embed) {
+        filteredData.embed = nodeData.embed;
+    } else if (nodeData.images) {
+        filteredData.images = nodeData.images;
+    }
+    ["description", "active", "year", "technologies", "tools"].forEach(key => { if (nodeData[key] !== undefined) filteredData[key] = nodeData[key]; });
     const jsonString = JSON.stringify(filteredData, null, 2);
 
     // Render the JSON as a single <pre><code> block with all words as spans
@@ -99,12 +104,14 @@ function openPopoverWithTypewriter(nodeData) {
 
     // Track which sections have been rendered
     let renderedH2 = false;
+    let renderedEmbed = false;
     let renderedImages = false;
     let renderedDesc = false;
     let renderedActiveYear = false;
     let renderedTechTools = false;
     const htmlElements = {
         node: null,
+        embed: null,
         images: null,
         description: null,
         active_year: null,
@@ -240,7 +247,7 @@ function openPopoverWithTypewriter(nodeData) {
 
             // 1. node (title)
             if (!renderedH2) {
-                const nodeMatch = buffer.match(/\s*,?\s*"node":\s*"([^\"]*)"\s*,?/);
+                const nodeMatch = buffer.match(/\s*,?\s*"node":\s*"([^"]*)"\s*,?/);
                 if (nodeMatch) {
                     renderedH2 = true;
                     replaceWithHtmlElement(nodeMatch[0], (() => {
@@ -252,8 +259,24 @@ function openPopoverWithTypewriter(nodeData) {
                     currentIndex = findNextUnrevealedIndex(0);
                 }
             }
-            // 2. images
-            if (!renderedImages) {
+            // 2. embed (iframe) or images (only one, embed takes priority)
+            if (!renderedEmbed && filteredData.embed) {
+                const embedMatch = buffer.match(/\s*,?\s*"embed":\s*"([^"]*)"\s*,?/);
+                if (embedMatch) {
+                    renderedEmbed = true;
+                    renderedImages = true; // skip images if embed is present
+                    replaceWithHtmlElement(embedMatch[0], (() => {
+                        const embedDiv = document.createElement('div');
+                        embedDiv.className = 'popover-embed-container';
+                        embedDiv.innerHTML = JSON.parse('"' + embedMatch[1].replace(/\\"/g, '"') + '"');
+                        htmlElements.embed = embedDiv;
+                        return embedDiv;
+                    })());
+                    currentIndex = findNextUnrevealedIndex(0);
+                }
+            }
+            // 2. images (only if no embed)
+            if (!renderedImages && !filteredData.embed) {
                 const imagesMatch = buffer.match(/\s*,?\s*"images":\s*\[(.*?)\]\s*,?/s);
                 if (imagesMatch) {
                     renderedImages = true;
@@ -336,7 +359,7 @@ function openPopoverWithTypewriter(nodeData) {
             // 4. year and 5. active (grouped in a single <p> with a single placeholder)
             if (!renderedActiveYear) {
                 // Try to match both together
-                const yearActivePattern = /\s*,?\s*"year":\s*"?([0-9]{4})"?\s*,?\s*"active":\s*(true|false)|\s*,?\s*"active":\s*(true|false)\s*,?\s*"year":\s*"?([0-9]{4})"?/;
+                const yearActivePattern = /\s*,?\s*"year":\s*"([^"]+)"\s*,?\s*"active":\s*(true|false)|\s*,?\s*"active":\s*(true|false)\s*,?\s*"year":\s*"([^"]+)"\s*,?/;
                 const match = buffer.match(yearActivePattern);
                 if (match) {
                     renderedActiveYear = true;
@@ -359,7 +382,7 @@ function openPopoverWithTypewriter(nodeData) {
             }
             // If not together, match and replace individually
             if (!renderedYear) {
-                const yearMatch = buffer.match(/\s*,?\s*"year":\s*"?([0-9]{4})"?\s*,?/);
+                const yearMatch = buffer.match(/\s*,?\s*"year":\s*"([^"]+)"\s*,?/);
                 if (yearMatch) {
                     renderedYear = true;
                     replaceWithHtmlElement(yearMatch[0], (() => {

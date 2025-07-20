@@ -540,4 +540,26 @@ pre {
     }
 }
 
+/* Responsive embed container for popover iframes */
+.popover-embed-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 1.5em auto;
+  aspect-ratio: 16 / 9;
+  background: #111;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+}
+.popover-embed-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #111;
+}
+
 
