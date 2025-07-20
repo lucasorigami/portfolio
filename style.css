@@ -19,6 +19,20 @@
     src: url("iAWriterQuattroV.woff2") format("woff2"), url("iAWriterQuattroV.woff") format("woff"), url("iAWriterQuattroV.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "IBM Plex Mono", monospace;
+    font-style: italic;
+    font-weight: normal;
+    src: url("IBMPlexMono-Italic.woff2") format("woff2"), url("IBMPlexMono-Italic.woff") format("woff"), url("IBMPlexMono-Italic.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "IBM Plex Mono", monospace;
+    font-style: normal;
+    font-weight: normal;
+    src: url("IBMPlexMono-Regular.woff2") format("woff2"), url("IBMPlexMono-Regular.woff") format("woff"), url("IBMPlexMono-Regular.otf") format("opentype");
+}
+
 html, body {
     font-size: 16px !important;
 }
@@ -36,7 +50,7 @@ h2 {
 
 p {
     color: white;
-    font-family: "IA Writer Quattro V";
+    font-family: "IBM Plex Mono";
 }
 
 a {
@@ -45,7 +59,7 @@ a {
 
 span {
     color: white;
-    font-family: "IA Writer Quattro V";
+    font-family: "IBM Plex Mono";
 }
 
 h1 {
@@ -382,7 +396,7 @@ body.popover-open {
 }
 
 pre {
-    font-family: "IA Writer Quattro V";;
+    font-family: "IBM Plex Mono";;
     text-wrap: wrap;
     overflow-x: wrap;
     font-size: 0.8em;
@@ -454,7 +468,7 @@ pre {
     align-items: center;
     justify-content: center;
     gap: 5px;
-    font-family: "IA Writer Quattro V";
+    font-family: "IBM Plex Mono";
 }
 
 #about-container {
@@ -482,7 +496,7 @@ pre {
     max-width: 400px;
     size: 1em;
     color: white;
-    font-family: "IA Writer Quattro V";
+    font-family: "IBM Plex Mono";
     ;
 }
 
